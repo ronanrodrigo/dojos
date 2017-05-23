@@ -44,9 +44,7 @@ class NormalizingNumbersTests: XCTestCase {
 class HammingCountTests: XCTestCase {
 
     func testShouldCountBetweenLeftAndRightBinaryNumber() {
-        let normalized = NormalizeBinaryNumbers.normalize(leftBinaryNumber: oneInBinary, rightBinaryNumber: fourInBinary)
-
-        let count = HammingCount.count(normalized.leftBinaryNumber, normalized.rightBinaryNumber)
+        let count = HammingCount.count(1, 4)
 
         XCTAssertEqual(2, count)
     }
