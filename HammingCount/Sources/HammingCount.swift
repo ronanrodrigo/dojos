@@ -17,17 +17,13 @@ struct NormalizeBinaryNumbers {
     static func normalize(leftBinaryNumber: String, rightBinaryNumber: String) -> (leftBinaryNumber: String, rightBinaryNumber: String) {
         var leftBinaryNumberCopied = leftBinaryNumber
         var rightBinaryNumberCopied = rightBinaryNumber
+        let diff = abs(rightBinaryNumber.characters.count - leftBinaryNumber.characters.count)
+        let zerosAtLeft = (0..<diff).map({ _ in "0" }).joined()
 
         if leftBinaryNumber.characters.count < rightBinaryNumber.characters.count {
-            let diff = rightBinaryNumber.characters.count - leftBinaryNumber.characters.count
-            for _ in 0..<diff {
-                leftBinaryNumberCopied = "0\(leftBinaryNumberCopied)"
-            }
+            leftBinaryNumberCopied = "\(zerosAtLeft)\(leftBinaryNumberCopied)"
         } else if leftBinaryNumber.characters.count > rightBinaryNumber.characters.count {
-            let diff = leftBinaryNumber.characters.count - rightBinaryNumber.characters.count
-            for _ in 0..<diff {
-                rightBinaryNumberCopied = "0\(rightBinaryNumberCopied)"
-            }
+            rightBinaryNumberCopied = "\(zerosAtLeft)\(rightBinaryNumberCopied)"
         }
 
         return (leftBinaryNumber: leftBinaryNumberCopied, rightBinaryNumber: rightBinaryNumberCopied)
