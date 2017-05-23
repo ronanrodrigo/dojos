@@ -3,6 +3,7 @@ import XCTest
 
 let fourInBinary = "100"
 let oneInBinary = "1"
+let oneInBinaryNormalized = "001"
 
 class NumberToBinaryStringTests: XCTestCase {
 
@@ -25,13 +26,20 @@ class NormalizingNumbersTests: XCTestCase {
     func testShouldNormalizeLeftNumberToSameSizeOfRightNumber() {
         let normalized = NormalizeBinaryNumbers.normalize(leftBinaryNumber: oneInBinary, rightBinaryNumber: fourInBinary)
 
-        XCTAssertEqual("001", normalized.leftBinaryNumber)
+        XCTAssertEqual(oneInBinaryNormalized, normalized.leftBinaryNumber)
     }
 
     func testShouldNormalizeRightNumberToSameSizeOfLeftNumber() {
         let normalized = NormalizeBinaryNumbers.normalize(leftBinaryNumber: fourInBinary, rightBinaryNumber: oneInBinary)
 
-        XCTAssertEqual("001", normalized.rightBinaryNumber)
+        XCTAssertEqual(oneInBinaryNormalized, normalized.rightBinaryNumber)
+    }
+
+    func testShouldNotNormalizeNumbersWithsameSize() {
+        let normalized = NormalizeBinaryNumbers.normalize(leftBinaryNumber: fourInBinary, rightBinaryNumber: oneInBinaryNormalized)
+
+        XCTAssertEqual(fourInBinary, normalized.leftBinaryNumber)
+        XCTAssertEqual(oneInBinaryNormalized, normalized.rightBinaryNumber)
     }
 
     static var allTests = [
